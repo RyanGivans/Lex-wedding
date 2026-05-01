@@ -461,6 +461,121 @@ url("https://media-api.xogrp.com/images/30d03fcb-53d3-409a-bfdc-21269ece8ae6~rt_
         display: none;
       }
     }
+    .rsvp-forest {
+  position: relative;
+}
+
+.rsvp-card {
+  max-width: 850px;
+  margin: auto;
+  padding: 48px;
+  background:
+    radial-gradient(circle at top, rgba(247,223,160,.11), transparent 32%),
+    linear-gradient(145deg, rgba(2, 22, 15, .88), rgba(0,0,0,.72));
+  border: 1px solid rgba(247,223,160,.48);
+  box-shadow:
+    0 0 50px rgba(200,162,74,.18),
+    0 35px 90px rgba(0,0,0,.55);
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+}
+
+.rsvp-card::before {
+  content: "❧ ❦ ❧";
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold-light);
+  font-size: 1.8rem;
+  letter-spacing: 16px;
+  opacity: .75;
+  text-shadow: 0 0 18px rgba(247,223,160,.65);
+}
+
+.rsvp-card::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(247,223,160,.18);
+  pointer-events: none;
+}
+
+.rsvp-intro {
+  margin: 38px auto 30px;
+  max-width: 620px;
+  text-align: center;
+  font-family: Cormorant Garamond, serif;
+  font-size: 1.45rem;
+  line-height: 1.6;
+  color: var(--cream);
+}
+
+form {
+  position: relative;
+  z-index: 2;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 16px 18px;
+  border: 1px solid rgba(247,223,160,.35);
+  background: rgba(0,0,0,.36);
+  color: var(--ivory);
+  font-family: Montserrat, sans-serif;
+  font-size: .95rem;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255,247,228,.65);
+}
+
+select {
+  color: rgba(255,247,228,.82);
+}
+
+textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 20px rgba(247,223,160,.22);
+}
+
+.form-note {
+  margin-top: 18px;
+  text-align: center;
+  font-size: .82rem;
+  color: rgba(255,247,228,.65);
+}
+
+.rsvp-success {
+  display: none;
+  margin-top: 28px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(247,223,160,.45);
+  background: rgba(247,223,160,.08);
+  color: var(--gold-light);
+  font-family: Cormorant Garamond, serif;
+  font-size: 1.35rem;
+}
   </style>
 </head>
 
@@ -587,21 +702,49 @@ url("https://media-api.xogrp.com/images/30d03fcb-53d3-409a-bfdc-21269ece8ae6~rt_
     </div>
   </section>
 
-  <section id="rsvp" class="reveal">
-    <div class="section-title">
-      <p>Celebrate With Us</p>
-      <h2>RSVP</h2>
-    </div>
+  <section id="rsvp" class="reveal rsvp-forest">
+  <div class="section-title">
+    <p>Celebrate With Us</p>
+    <h2>RSVP Beneath the Lights</h2>
+  </div>
 
-    <div class="magic-card center">
-      <p class="story-text">
-        Please let us know if you will be joining us for this magical evening.
+  <div class="rsvp-card">
+    <p class="rsvp-intro">
+      Please let us know if you will be joining us for this enchanted evening.
+    </p>
+
+    <form id="rsvpForm" action="YOUR-FORM-LINK-HERE" method="POST">
+      <div class="form-row">
+        <input type="text" name="guest_name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+      </div>
+
+      <div class="form-row">
+        <select name="attendance" required>
+          <option value="">Will you attend?</option>
+          <option value="Yes">Yes, I will be there</option>
+          <option value="No">Sadly, I cannot attend</option>
+        </select>
+
+        <input type="number" name="guest_count" min="1" max="10" placeholder="Number of Guests">
+      </div>
+
+      <textarea name="dietary_notes" placeholder="Meal notes or dietary restrictions"></textarea>
+      <input type="text" name="song_request" placeholder="Song request for the dance floor">
+      <textarea name="message" placeholder="A message for Lex & Payton"></textarea>
+
+      <button type="submit" class="btn">Send RSVP</button>
+
+      <p class="form-note">
+        Your response will help us prepare a beautiful evening for everyone we love.
       </p>
-      <a class="btn" href="https://www.theknot.com/us/payton-craig-and-lex-ly/rsvp" target="_blank">
-        RSVP on The Knot
-      </a>
+    </form>
+
+    <div id="rsvpSuccess" class="rsvp-success">
+      ✨ Thank you. Your RSVP has been sent with love.
     </div>
-  </section>
+  </div>
+</section>
 
   <footer>
     <div class="monogram">L & P</div>
@@ -643,6 +786,18 @@ url("https://media-api.xogrp.com/images/30d03fcb-53d3-409a-bfdc-21269ece8ae6~rt_
       document.querySelector(".hero-card").style.transform =
         `translate(${x * 10}px, ${y * 10}px)`;
     });
+    const rsvpForm = document.getElementById("rsvpForm");
+const rsvpSuccess = document.getElementById("rsvpSuccess");
+
+if (rsvpForm) {
+  rsvpForm.addEventListener("submit", function(e) {
+    if (rsvpForm.action.includes("YOUR-FORM-LINK-HERE")) {
+      e.preventDefault();
+      rsvpSuccess.style.display = "block";
+      rsvpSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  });
+}
   </script>
 </body>
 </html>
