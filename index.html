@@ -9,14 +9,14 @@
     @import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;700&display=swap');
 
     :root {
-      --black: #030403;
-      --green-deep: #031711;
-      --green-dark: #06261c;
-      --green: #0b3f2d;
+      --black: #020302;
+      --green-deep: #03150f;
+      --green-dark: #06251b;
+      --green: #0b3c2b;
       --gold: #c8a24a;
-      --gold-light: #f5dfa1;
-      --ivory: #fff6df;
-      --cream: #d8c9a5;
+      --gold-light: #f7dfa0;
+      --ivory: #fff7e4;
+      --cream: #d9c9a5;
     }
 
     * {
@@ -36,52 +36,59 @@
       overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
+    .forest-bg {
       position: fixed;
       inset: 0;
+      z-index: -5;
       background:
-        radial-gradient(circle at 20% 20%, rgba(245,223,161,.16), transparent 18%),
-        radial-gradient(circle at 80% 10%, rgba(30,120,79,.18), transparent 28%),
-        radial-gradient(circle at 50% 70%, rgba(201,162,74,.12), transparent 30%),
-        linear-gradient(135deg, #010201, #031711 35%, #081f18 68%, #010101);
-      z-index: -4;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(245,223,161,.75) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(255,255,255,.28) 1px, transparent 1.4px);
-      background-size: 80px 80px, 130px 130px;
-      opacity: .38;
-      animation: fireflies 22s linear infinite;
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    @keyframes fireflies {
-      from { transform: translateY(0); }
-      to { transform: translateY(-120px); }
+        radial-gradient(circle at 20% 15%, rgba(247,223,160,.18), transparent 18%),
+        radial-gradient(circle at 80% 25%, rgba(21,111,72,.2), transparent 28%),
+        radial-gradient(circle at 50% 80%, rgba(200,162,74,.12), transparent 32%),
+        linear-gradient(135deg, #010201, #03150f 40%, #081f18 70%, #010101);
     }
 
     .mist {
       position: fixed;
-      inset: 0;
+      inset: -20%;
       background:
-        radial-gradient(ellipse at 10% 80%, rgba(255,255,255,.08), transparent 35%),
-        radial-gradient(ellipse at 90% 70%, rgba(255,255,255,.06), transparent 40%);
-      filter: blur(20px);
-      animation: mistMove 16s ease-in-out infinite alternate;
+        radial-gradient(ellipse at 20% 80%, rgba(255,255,255,.09), transparent 35%),
+        radial-gradient(ellipse at 85% 70%, rgba(255,255,255,.07), transparent 38%),
+        radial-gradient(ellipse at 45% 45%, rgba(255,255,255,.045), transparent 42%);
+      filter: blur(28px);
+      animation: mistMove 18s ease-in-out infinite alternate;
       pointer-events: none;
-      z-index: -1;
+      z-index: -2;
     }
 
     @keyframes mistMove {
-      from { transform: translateX(-30px); opacity: .4; }
-      to { transform: translateX(30px); opacity: .8; }
+      from { transform: translateX(-40px) translateY(10px); opacity: .45; }
+      to { transform: translateX(40px) translateY(-10px); opacity: .85; }
+    }
+
+    .fireflies {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .firefly {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--gold-light), 0 0 28px rgba(247,223,160,.65);
+      opacity: .7;
+      animation: floatFirefly linear infinite;
+    }
+
+    @keyframes floatFirefly {
+      from { transform: translateY(105vh) translateX(0); opacity: 0; }
+      15% { opacity: .9; }
+      85% { opacity: .8; }
+      to { transform: translateY(-20vh) translateX(70px); opacity: 0; }
     }
 
     nav {
@@ -100,9 +107,9 @@
 
     .logo {
       font-family: Birthstone, cursive;
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       color: var(--gold-light);
-      text-shadow: 0 0 18px rgba(245,223,161,.45);
+      text-shadow: 0 0 18px rgba(247,223,160,.55);
     }
 
     .nav-links {
@@ -117,10 +124,12 @@
       font-size: .72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      transition: .3s;
     }
 
     .nav-links a:hover {
       color: var(--gold-light);
+      text-shadow: 0 0 12px rgba(247,223,160,.65);
     }
 
     .hero {
@@ -138,10 +147,10 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(rgba(0,0,0,.34), rgba(0,0,0,.78)),
-        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=85") center/cover;
-      z-index: -3;
-      animation: slowZoom 18s ease-in-out infinite alternate;
+        linear-gradient(rgba(0,0,0,.24), rgba(0,0,0,.78)),
+        url("https://media-api.xogrp.com/images/30d03fcb-53d3-409a-bfdc-21269ece8ae6~rt_auto-cr_0.0.1334.2000-rs_2880.h?ordering=explicit&quality=90") center/cover;
+      z-index: -4;
+      animation: slowZoom 22s ease-in-out infinite alternate;
     }
 
     @keyframes slowZoom {
@@ -154,21 +163,21 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at center, transparent 20%, rgba(0,0,0,.72) 75%),
-        linear-gradient(to bottom, transparent 65%, var(--black));
-      z-index: -2;
+        radial-gradient(circle at center, transparent 18%, rgba(0,0,0,.75) 76%),
+        linear-gradient(to bottom, transparent 60%, var(--black));
+      z-index: -3;
     }
 
     .hero-card {
-      max-width: 980px;
-      padding: 58px 42px;
-      background: rgba(2, 20, 14, .62);
-      border: 1px solid rgba(245,223,161,.7);
-      outline: 1px solid rgba(245,223,161,.25);
-      outline-offset: -15px;
+      max-width: 1000px;
+      padding: 62px 44px;
+      background: rgba(2, 18, 13, .62);
+      border: 1px solid rgba(247,223,160,.75);
+      outline: 1px solid rgba(247,223,160,.25);
+      outline-offset: -16px;
       box-shadow:
-        0 0 45px rgba(200,162,74,.26),
-        0 45px 100px rgba(0,0,0,.75);
+        0 0 55px rgba(200,162,74,.35),
+        0 45px 120px rgba(0,0,0,.82);
       position: relative;
       animation: rise 1.3s ease both;
     }
@@ -177,17 +186,17 @@
     .hero-card::after {
       content: "❧";
       position: absolute;
-      top: -30px;
-      font-size: 4rem;
+      top: -34px;
+      font-size: 4.4rem;
       color: var(--gold-light);
-      text-shadow: 0 0 22px rgba(245,223,161,.65);
+      text-shadow: 0 0 24px rgba(247,223,160,.75);
     }
 
-    .hero-card::before { left: 25px; }
-    .hero-card::after { right: 25px; transform: scaleX(-1); }
+    .hero-card::before { left: 28px; }
+    .hero-card::after { right: 28px; transform: scaleX(-1); }
 
     @keyframes rise {
-      from { opacity: 0; transform: translateY(35px); }
+      from { opacity: 0; transform: translateY(38px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -202,7 +211,7 @@
 
     h1 {
       font-family: Cormorant Garamond, serif;
-      font-size: clamp(4rem, 10vw, 8.8rem);
+      font-size: clamp(4rem, 10vw, 8.9rem);
       line-height: .85;
       font-weight: 500;
     }
@@ -212,7 +221,7 @@
       font-family: Birthstone, cursive;
       color: var(--gold-light);
       font-size: clamp(3.5rem, 7vw, 6.8rem);
-      text-shadow: 0 0 24px rgba(245,223,161,.45);
+      text-shadow: 0 0 26px rgba(247,223,160,.55);
     }
 
     .hero-date {
@@ -220,7 +229,7 @@
       font-family: Cinzel, serif;
       letter-spacing: 4px;
       color: var(--cream);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
 
     .btn {
@@ -234,32 +243,32 @@
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 2px;
-      box-shadow: 0 0 28px rgba(245,223,161,.38);
+      box-shadow: 0 0 28px rgba(247,223,160,.42);
       transition: .3s;
     }
 
     .btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 0 48px rgba(245,223,161,.72);
+      box-shadow: 0 0 55px rgba(247,223,160,.75);
     }
 
     .divider {
       text-align: center;
-      padding: 28px;
+      padding: 30px;
       color: var(--gold-light);
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       letter-spacing: 16px;
-      text-shadow: 0 0 24px rgba(245,223,161,.6);
+      text-shadow: 0 0 26px rgba(247,223,160,.7);
     }
 
     section {
-      padding: 100px 8%;
+      padding: 105px 8%;
       position: relative;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 45px;
+      margin-bottom: 46px;
     }
 
     .section-title p {
@@ -277,13 +286,13 @@
     }
 
     .magic-card {
-      max-width: 900px;
+      max-width: 960px;
       margin: auto;
-      padding: 45px;
+      padding: 48px;
       background:
         linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
-      border: 1px solid rgba(200,162,74,.38);
-      box-shadow: 0 30px 90px rgba(0,0,0,.42);
+      border: 1px solid rgba(200,162,74,.4);
+      box-shadow: 0 30px 90px rgba(0,0,0,.46);
       backdrop-filter: blur(12px);
       position: relative;
     }
@@ -292,14 +301,14 @@
       content: "";
       position: absolute;
       inset: 14px;
-      border: 1px solid rgba(245,223,161,.18);
+      border: 1px solid rgba(247,223,160,.18);
       pointer-events: none;
     }
 
     .story-text {
       font-family: Cormorant Garamond, serif;
-      font-size: 1.45rem;
-      line-height: 1.8;
+      font-size: 1.42rem;
+      line-height: 1.78;
       text-align: center;
       color: var(--cream);
     }
@@ -314,14 +323,14 @@
       padding: 38px 26px;
       text-align: center;
       background: rgba(2, 22, 15, .68);
-      border: 1px solid rgba(200,162,74,.4);
-      box-shadow: 0 18px 60px rgba(0,0,0,.36);
+      border: 1px solid rgba(200,162,74,.42);
+      box-shadow: 0 18px 60px rgba(0,0,0,.38);
       transition: .35s;
     }
 
     .detail-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 0 42px rgba(200,162,74,.18);
+      box-shadow: 0 0 45px rgba(200,162,74,.24);
     }
 
     .detail-card h3 {
@@ -338,41 +347,73 @@
 
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 1100px;
+      margin: auto;
     }
 
     .photo-grid img {
       width: 100%;
-      height: 320px;
+      height: 430px;
       object-fit: cover;
-      border: 1px solid rgba(245,223,161,.45);
-      filter: brightness(.82) contrast(1.08) saturate(.9);
+      border: 1px solid rgba(247,223,160,.5);
+      filter: brightness(.84) contrast(1.08) saturate(.92);
       transition: .5s;
+      box-shadow: 0 22px 60px rgba(0,0,0,.42);
     }
 
     .photo-grid img:hover {
-      transform: scale(1.04);
+      transform: scale(1.035);
       filter: brightness(1.08);
-      box-shadow: 0 0 35px rgba(245,223,161,.35);
+      box-shadow: 0 0 42px rgba(247,223,160,.4);
     }
 
     .center {
       text-align: center;
     }
 
+    .floating-vines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      opacity: .3;
+    }
+
+    .floating-vines::before,
+    .floating-vines::after {
+      content: "❦ ❧ ❦ ❧ ❦ ❧";
+      position: absolute;
+      writing-mode: vertical-rl;
+      top: 90px;
+      color: var(--gold-light);
+      font-size: 2rem;
+      letter-spacing: 20px;
+      animation: vineFloat 6s ease-in-out infinite alternate;
+      text-shadow: 0 0 22px rgba(247,223,160,.55);
+    }
+
+    .floating-vines::before { left: 18px; }
+    .floating-vines::after { right: 18px; animation-delay: 2s; }
+
+    @keyframes vineFloat {
+      from { transform: translateY(0); }
+      to { transform: translateY(30px); }
+    }
+
     footer {
       text-align: center;
-      padding: 60px 8%;
-      border-top: 1px solid rgba(200,162,74,.25);
+      padding: 65px 8%;
+      border-top: 1px solid rgba(200,162,74,.28);
       color: var(--cream);
     }
 
     footer .monogram {
       font-family: Birthstone, cursive;
       color: var(--gold-light);
-      font-size: 4rem;
-      text-shadow: 0 0 22px rgba(245,223,161,.55);
+      font-size: 4.2rem;
+      text-shadow: 0 0 26px rgba(247,223,160,.6);
     }
 
     .reveal {
@@ -384,34 +425,6 @@
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
-    }
-
-    .floating-vines {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-      opacity: .28;
-    }
-
-    .floating-vines::before,
-    .floating-vines::after {
-      content: "❦ ❧ ❦ ❧ ❦";
-      position: absolute;
-      writing-mode: vertical-rl;
-      top: 90px;
-      color: var(--gold-light);
-      font-size: 2rem;
-      letter-spacing: 20px;
-      animation: vineFloat 6s ease-in-out infinite alternate;
-    }
-
-    .floating-vines::before { left: 20px; }
-    .floating-vines::after { right: 20px; animation-delay: 2s; }
-
-    @keyframes vineFloat {
-      from { transform: translateY(0); }
-      to { transform: translateY(28px); }
     }
 
     @media (max-width: 850px) {
@@ -436,6 +449,10 @@
         grid-template-columns: 1fr;
       }
 
+      .photo-grid img {
+        height: 480px;
+      }
+
       .hero-card,
       .magic-card {
         padding: 38px 24px;
@@ -449,8 +466,10 @@
 </head>
 
 <body>
+  <div class="forest-bg"></div>
   <div class="mist"></div>
   <div class="floating-vines"></div>
+  <div class="fireflies" id="fireflies"></div>
 
   <nav>
     <div class="logo">L & P</div>
@@ -477,14 +496,34 @@
   <section id="story" class="reveal">
     <div class="section-title">
       <p>Our Story</p>
-      <h2>A Love Written in Gold</h2>
+      <h2>A Love That Feels Like Home</h2>
     </div>
 
     <div class="magic-card">
       <p class="story-text">
-        Welcome to the wedding celebration of Lex Ly and Payton Craig.
-        Beneath glowing lights, surrounded by greenery, romance, music, and the people they love most,
-        they will begin their next chapter together.
+        We met online, through Bumble—two lives crossing paths in a way neither of us expected.
+        At first, Payton was a little shy, careful with opening up. And Lexi was busy with life,
+        not really looking for love or anything to slow her down. It felt like the timing wasn’t perfect…
+        but somehow, it was exactly right.
+        <br><br>
+        Our first date changed everything. What started as something simple turned into something
+        we both felt but couldn’t quite explain. There was ease in the conversation, comfort in the silence,
+        and a spark that didn’t fade when the night ended—it only grew.
+        <br><br>
+        From that moment on, life started to shift in the most beautiful way. We’ve been blessed to have
+        each other ever since.
+        <br><br>
+        We are still learning each other, still growing together, still discovering new layers of love every day.
+        And that’s what makes this so real to us—not perfection, but presence. Not rushing, but building.
+        <br><br>
+        Our love was never built on the idea of a destination. It was never about arriving somewhere “finished.”
+        It has always been about the journey.
+        <br><br>
+        The quiet moments. The laughter. The lessons. The growth. The choice to keep showing up for each other,
+        again and again.
+        <br><br>
+        And today, we don’t stand here as two people who found something perfect—we stand here as two people
+        who found something real. A love that feels like home.
       </p>
     </div>
   </section>
@@ -520,24 +559,32 @@
     </div>
 
     <div class="photo-grid">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80">
+      <img src="https://media-api.xogrp.com/images/30d03fcb-53d3-409a-bfdc-21269ece8ae6~rt_auto-cr_0.0.1334.2000-rs_2880.h?ordering=explicit&quality=90" alt="Lex and Payton">
+      <img src="https://media-api.xogrp.com/images/91d02449-3596-4042-ab8c-8164834c6928~rt_auto-cr_0.0.1334.2000-rs_2880.h?ordering=explicit&quality=90" alt="Lex and Payton engagement photo">
+      <img src="https://media-api.xogrp.com/images/2e73d119-0973-464f-a93b-676d82b953b9~rt_auto-cr_0.0.1334.2000-rs_2880.h?ordering=explicit&quality=90" alt="Lex and Payton engagement photo">
     </div>
   </section>
 
   <section id="registry" class="reveal">
     <div class="section-title">
-      <p>Registry</p>
-      <h2>Gifts & Wishes</h2>
+      <p>Our Wedding Wish</p>
+      <h2>Honeymoon Registry</h2>
     </div>
 
     <div class="magic-card center">
       <p class="story-text">
-        Your presence is the greatest gift. Registry details can be found on The Knot.
+        Instead of a traditional wedding registry, we’ve chosen to do something a little different.
+        We are so grateful to be stepping into this new chapter together, and more than anything,
+        we value experiences, memories, and time shared with each other.
+        <br><br>
+        Instead of gifts, we would be truly appreciative of any contributions toward our next adventure.
+        We are planning to travel through South Asia for two months next spring for our extended honeymoon.
+        This journey means a lot to us.
       </p>
-      <a class="btn" href="https://www.theknot.com/us/payton-craig-and-lex-ly/registry" target="_blank">View Registry</a>
+
+      <a class="btn" href="https://www.theknot.com/us/payton-craig-and-lex-ly/registry" target="_blank">
+        Contribute to Our Honeymoon
+      </a>
     </div>
   </section>
 
@@ -549,9 +596,11 @@
 
     <div class="magic-card center">
       <p class="story-text">
-        Please let us know if you will be joining this magical evening.
+        Please let us know if you will be joining us for this magical evening.
       </p>
-      <a class="btn" href="https://www.theknot.com/us/payton-craig-and-lex-ly/rsvp" target="_blank">RSVP on The Knot</a>
+      <a class="btn" href="https://www.theknot.com/us/payton-craig-and-lex-ly/rsvp" target="_blank">
+        RSVP on The Knot
+      </a>
     </div>
   </section>
 
@@ -574,6 +623,27 @@
 
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll();
+
+    const fireflyContainer = document.getElementById("fireflies");
+
+    for (let i = 0; i < 45; i++) {
+      const firefly = document.createElement("span");
+      firefly.className = "firefly";
+      firefly.style.left = Math.random() * 100 + "vw";
+      firefly.style.animationDuration = 8 + Math.random() * 14 + "s";
+      firefly.style.animationDelay = Math.random() * 10 + "s";
+      firefly.style.opacity = Math.random() * 0.8;
+      firefly.style.transform = `scale(${0.5 + Math.random() * 1.5})`;
+      fireflyContainer.appendChild(firefly);
+    }
+
+    document.addEventListener("mousemove", e => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+
+      document.querySelector(".hero-card").style.transform =
+        `translate(${x * 10}px, ${y * 10}px)`;
+    });
   </script>
 </body>
 </html>
