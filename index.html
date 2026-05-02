@@ -1203,50 +1203,53 @@ footer{
         └──────────────────────────────────────────────────────────────┘
       -->
       <form id="rsvpForm" novalidate>
-        <div class="form-row">
-          <div class="fg">
-            <label for="guestName">Full Name</label>
-            <input type="text" id="guestName" name="guestName" placeholder="Your name" required>
-          </div>
-          <div class="fg">
-            <label for="guestEmail">Email Address</label>
-            <input type="email" id="guestEmail" name="guestEmail" placeholder="your@email.com" required>
-          </div>
-        </div>
+  <div class="form-row">
+    <div class="fg">
+      <label for="guestName">Full Name</label>
+      <input type="text" id="guestName" name="guestName" placeholder="Your name" required>
+    </div>
 
-        <div class="form-row">
-          <div class="fg">
-            <label for="attending">Will You Attend?</label>
-            <select id="attending" name="attending" required>
-              <option value="" disabled selected>Please select</option>
-              <option value="yes">Joyfully Accepts</option>
-              <option value="no">Regretfully Declines</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label for="guestCount">Due to limited seating, please let us know if you need a plus one.</label>
-         
-             
-             
-            </select>
-          </div>
-        </div>
+    <div class="fg">
+      <label for="guestEmail">Email Address</label>
+      <input type="email" id="guestEmail" name="guestEmail" placeholder="your@email.com" required>
+    </div>
+  </div>
 
-        <div class="fg">
-          <label for="songRequest">Song Request</label>
-          <input type="text" id="songRequest" name="songRequest" placeholder="What will get you on the dance floor?">
-        </div>
+  <div class="form-row">
+    <div class="fg">
+      <label for="attending">Will You Attend?</label>
+      <select id="attending" name="attending" required>
+        <option value="" disabled selected>Please select</option>
+        <option value="yes">Joyfully Accepts</option>
+        <option value="no">Regretfully Declines</option>
+      </select>
+    </div>
 
-        <div class="fg">
-          <label for="message">A Message for the Couple</label>
-          <textarea id="message" name="message" placeholder="Share your wishes, a memory, or anything on your heart…"></textarea>
-        </div>
+    <div class="fg">
+      <label>Due to limited seating, please let us know if you need a plus one.</label>
+      <select id="plusOne" name="plusOne">
+        <option value="no">No, just me</option>
+        <option value="yes">But, I will talk to you first.</option>
+      </select>
+    </div>
+  </div>
 
-        <button type="submit" class="rsvp-submit">
-          <span class="rs-txt">Send with Love</span>
-        </button>
-        <p class="rsvp-note">Your response is saved securely. We'll be in touch as the day draws near.</p>
-      </form>
+  <div class="fg">
+    <label for="songRequest">Song Request</label>
+    <input type="text" id="songRequest" name="songRequest" placeholder="What will get you on the dance floor?">
+  </div>
+
+  <div class="fg">
+    <label for="message">A Message for the Couple</label>
+    <textarea id="message" name="message" placeholder="Share your wishes, a memory, or anything on your heart…"></textarea>
+  </div>
+
+  <button type="submit" class="rsvp-submit">
+    <span class="rs-txt">Send with Love</span>
+  </button>
+
+  <p class="rsvp-note">Your response is saved securely. We'll be in touch as the day draws near.</p>
+</form>
     </div>
   </div>
 </section>
@@ -1429,17 +1432,17 @@ rsvpForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   // Collect data
-  const data = {
-    id:         Date.now(),
-    timestamp:  new Date().toLocaleString(),
-    name:       document.getElementById('guestName').value.trim(),
-    email:      document.getElementById('guestEmail').value.trim(),
-    attending:  document.getElementById('attending').value,
-    guests:     document.getElementById('guestCount').value,
-    dietary:    document.getElementById('dietary').value.trim(),
-    song:       document.getElementById('songRequest').value.trim(),
-    message:    document.getElementById('message').value.trim(),
-  };
+const data = {
+  id: Date.now(),
+  timestamp: new Date().toLocaleString(),
+
+  name: document.getElementById('guestName').value.trim(),
+  email: document.getElementById('guestEmail').value.trim(),
+  attending: document.getElementById('attending').value,
+  plusOne: document.getElementById('plusOne').value,
+  song: document.getElementById('songRequest').value.trim(),
+  message: document.getElementById('message').value.trim()
+};
 
   // Validation
   if (!data.name || !data.email || !data.attending) {
