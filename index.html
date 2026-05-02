@@ -734,6 +734,24 @@ footer{
   .cd-num{font-size:2rem}
   .reg-btns{flex-direction:column;align-items:center}
 }
+   .registry-section {
+  padding: 100px 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.registry-section h2 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  font-family: Georgia, serif;
+}
+
+.registry-section p {
+  max-width: 650px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+  color: #555;
+}
 </style>
 </head>
 <body>
@@ -745,7 +763,7 @@ footer{
 
 <!-- ═══════════════════════════════════════════════
      ADMIN OVERLAY
-     Default password: WhiteRiver2026!
+     Default password: Craig
      Change ADMIN_PASSWORD constant in the script.
 ═══════════════════════════════════════════════ -->
 <div class="admin-overlay" id="adminOverlay">
@@ -1205,19 +1223,13 @@ footer{
             </select>
           </div>
           <div class="fg">
-            <label for="guestCount">Number of Guests</label>
+            <label for="guestCount">Will a plus one be joining you?</label>
             <select id="guestCount" name="guestCount">
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
+              <option value="1">Yes</option>
+              <option value="2">No</option>
+             
             </select>
           </div>
-        </div>
-
-        <div class="fg">
-          <label for="dietary">Meal Notes &amp; Dietary Restrictions</label>
-          <input type="text" id="dietary" name="dietary" placeholder="Vegetarian, gluten-free, allergies…">
         </div>
 
         <div class="fg">
@@ -1238,7 +1250,17 @@ footer{
     </div>
   </div>
 </section>
+<section class="registry-section">
+  <h2>Our Honeyfund</h2>
+  <p>
+    Your presence means the most to us. For anyone who would like to give,
+    we’ve created a Honeyfund to help us start this next chapter together.
+  </p>
 
+  <a class="btn primary" href="PASTE-YOUR-LINK-HERE" target="_blank">
+    Contribute to Our Honeyfund
+  </a>
+</section>
 <!-- ═══════════════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════════════ -->
