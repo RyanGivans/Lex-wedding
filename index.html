@@ -1165,93 +1165,93 @@ footer{
 <!-- ═══════════════════════════════════════════════
      RSVP
 ═══════════════════════════════════════════════ -->
-<section class="rsvp" id="rsvp">
-  <div class="inner">
-    <span class="sec-label reveal">Will You Join Us?</span>
-    <h2 class="sec-title reveal reveal-d1">RSVP</h2>
-    <div class="sec-title-italic reveal reveal-d2">Kindly reply by September 1, 2026</div>
+<section id="rsvp" class="rsvp-section">
 
-    <div class="rsvp-wrap reveal reveal-d3">
+  <h2 class="rsvp-title">Kindly reply by September 1, 2026</h2>
 
-      <!-- RSVP Success Message (hidden by default) -->
-      <div class="rsvp-success" id="rsvpSuccess">
-        <h3>With Gratitude</h3>
-        <p>Your RSVP has been received.<br>We cannot wait to celebrate with you<br>beneath the stars at White River Landing.</p>
+  <form 
+    id="rsvpForm"
+    action="https://formspree.io/f/xojrjezn"
+    method="POST"
+    class="rsvp-form"
+  >
+
+    <!-- Hidden config -->
+    <input type="hidden" name="_subject" value="New Wedding RSVP">
+    <input type="hidden" name="_captcha" value="false">
+
+    <div class="form-row">
+      <div class="fg">
+        <label>Full Name</label>
+        <input 
+          type="text" 
+          id="guestName" 
+          name="Name" 
+          placeholder="Your name" 
+          required
+        >
       </div>
 
-      <!--
-        ┌──────────────────────────────────────────────────────────────┐
-        │  RSVP BACKEND — CHOOSE ONE:                                  │
-        │                                                              │
-        │  OPTION A — Formspree (easiest email-to-inbox):              │
-        │  1. Go to formspree.io and create a free account             │
-        │  2. Create a new form and get your endpoint URL              │
-        │  3. Set action="https://formspree.io/f/YOUR_FORM_ID"         │
-        │  4. Set FORM_ENDPOINT in the script below                    │
-        │                                                              │
-        │  OPTION B — Netlify Forms (if hosted on Netlify):            │
-        │  1. Add netlify attribute to the <form> tag                  │
-        │  2. Change action to "/success" or leave blank               │
-        │  3. View submissions in Netlify dashboard                    │
-        │                                                              │
-        │  OPTION C — Google Forms embed:                              │
-        │  1. Create a Google Form with matching fields                │
-        │  2. Get the pre-filled URL and submit via JS                 │
-        │                                                              │
-        │  For now, RSVPs are saved locally in the browser             │
-        │  and visible in the Admin panel (password protected).        │
-        └──────────────────────────────────────────────────────────────┘
-      -->
-      <form id="rsvpForm" novalidate>
-  <div class="form-row">
-    <div class="fg">
-      <label for="guestName">Full Name</label>
-      <input type="text" id="guestName" name="guestName" placeholder="Your name" required>
+      <div class="fg">
+        <label>Email Address</label>
+        <input 
+          type="email" 
+          id="guestEmail" 
+          name="Email" 
+          placeholder="your@email.com" 
+          required
+        >
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="fg">
+        <label>Will You Attend?</label>
+        <select id="attending" name="Attending" required>
+          <option value="">Please select</option>
+          <option value="Joyfully Accepts">Joyfully Accepts</option>
+          <option value="Regretfully Declines">Regretfully Declines</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label>Plus One</label>
+        <select id="plusOne" name="Plus One">
+          <option value="No">No, just me</option>
+          <option value="Yes">Yes, bringing a guest</option>
+        </select>
+      </div>
     </div>
 
     <div class="fg">
-      <label for="guestEmail">Email Address</label>
-      <input type="email" id="guestEmail" name="guestEmail" placeholder="your@email.com" required>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="fg">
-      <label for="attending">Will You Attend?</label>
-      <select id="attending" name="attending" required>
-        <option value="" disabled selected>Please select</option>
-        <option value="yes">Joyfully Accepts</option>
-        <option value="no">Regretfully Declines</option>
-      </select>
+      <label>Song Request</label>
+      <input 
+        type="text" 
+        id="songRequest" 
+        name="Song Request" 
+        placeholder="What will get you on the dance floor?"
+      >
     </div>
 
     <div class="fg">
-      <label>Due to limited seating, please let us know if you need a plus one.</label>
-      <select id="plusOne" name="plusOne">
-        <option value="no">No, just me</option>
-        <option value="yes">But, I will talk to you first.</option>
-      </select>
+      <label>A Message for the Couple</label>
+      <textarea 
+        id="message" 
+        name="Message" 
+        rows="4"
+        placeholder="Share your wishes, a memory, or anything on your heart…"
+      ></textarea>
     </div>
-  </div>
 
-  <div class="fg">
-    <label for="songRequest">Song Request</label>
-    <input type="text" id="songRequest" name="songRequest" placeholder="What will get you on the dance floor?">
-  </div>
+    <button type="submit" class="rsvp-submit">
+      Send With Love
+    </button>
 
-  <div class="fg">
-    <label for="message">A Message for the Couple</label>
-    <textarea id="message" name="message" placeholder="Share your wishes, a memory, or anything on your heart…"></textarea>
-  </div>
+    <p class="rsvp-note">
+      Your response will be sent directly to the couple.
+    </p>
 
-  <button type="submit" class="rsvp-submit">
-    <span class="rs-txt">Send with Love</span>
-  </button>
-
-  <p class="rsvp-note">Your response is saved securely. We'll be in touch as the day draws near.</p>
-</form>
-    </div>
-  </div>
+  </form>
 </section>
 <section class="registry-section">
   <h2>Our Honeyfund</h2>
@@ -1428,8 +1428,7 @@ revealEls.forEach(el => revealObs.observe(el));
 const rsvpForm    = document.getElementById('rsvpForm');
 const rsvpSuccess = document.getElementById('rsvpSuccess');
 
-rsvpForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+
 
   // Collect data
 const data = {
@@ -1450,12 +1449,7 @@ const data = {
     return;
   }
 
-  // Save to localStorage
-  try {
-    const stored = JSON.parse(localStorage.getItem('rsvps') || '[]');
-    stored.push(data);
-    localStorage.setItem('rsvps', JSON.stringify(stored));
-  } catch(err) { console.warn('LocalStorage error:', err); }
+ 
 
   // Submit to Formspree / endpoint if configured
   if (FORM_ENDPOINT) {
@@ -1515,11 +1509,6 @@ function showDashboard() {
   renderDashboard();
 }
 
-function renderDashboard() {
-  const rsvps = JSON.parse(localStorage.getItem('rsvps') || '[]');
-  const attending = rsvps.filter(r => r.attending === 'yes');
-  const declining = rsvps.filter(r => r.attending === 'no');
-  const totalGuests = attending.reduce((sum, r) => sum + parseInt(r.guests || 1), 0);
 
   // Stats
   document.getElementById('adminStats').innerHTML = `
@@ -1598,33 +1587,17 @@ adminPwdInput.addEventListener('keydown', e => {
 
 document.getElementById('adminClose').addEventListener('click', closeAdmin);
 
-// Export CSV
-document.getElementById('exportCsv').addEventListener('click', () => {
-  const rsvps = JSON.parse(localStorage.getItem('rsvps') || '[]');
-  if (!rsvps.length) { alert('No RSVPs to export.'); return; }
-  const headers = ['Date','Name','Email','Attending','Guests','Dietary','Song','Message'];
-  const rows = rsvps.map(r => [
-    r.timestamp, r.name, r.email, r.attending, r.guests,
-    r.dietary, r.song, r.message
-  ].map(v => `"${String(v||'').replace(/"/g,'""')}"`).join(','));
-  const csv = [headers.join(','), ...rows].join('\n');
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'}));
-  a.download = 'lex-payton-rsvps.csv';
-  a.click();
-});
+
 
 // Clear RSVPs (with confirmation)
 document.getElementById('clearRsvps').addEventListener('click', () => {
   if (confirm('Are you sure you want to permanently delete all RSVP data?')) {
-    localStorage.removeItem('rsvps');
     renderDashboard();
   }
 });
 
 // Open admin via nav link or #admin hash
 adminNavLink.addEventListener('click', e => {
-  e.preventDefault();
   history.pushState(null, '', '#admin');
   openAdmin();
 });
