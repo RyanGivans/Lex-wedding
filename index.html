@@ -310,6 +310,53 @@ footer { background:var(--deep); padding:5rem 2rem 2rem; text-align:center; bord
   .cd-num{font-size:2rem}
   .reg-btns{flex-direction:column;align-items:center}
 }
+
+  .venue {
+  background: linear-gradient(180deg, var(--deep), var(--forest-mid));
+  text-align: center;
+}
+
+.venue-text {
+  max-width: 680px;
+  margin: 1.5rem auto 3rem;
+  font-family: var(--script);
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--cream);
+}
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: 1.35fr .65fr;
+  gap: 1.3rem;
+  margin: 3rem auto;
+  max-width: 1050px;
+}
+
+.venue-grid img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border: 1px solid rgba(201,168,76,.2);
+  filter: brightness(.88) sepia(.08);
+}
+
+.venue-main {
+  grid-row: span 2;
+  height: 625px !important;
+}
+
+@media(max-width:768px) {
+  .venue-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-main,
+  .venue-grid img {
+    height: 280px !important;
+  }
+}
+  
 </style>
 </head>
 
@@ -400,6 +447,28 @@ footer { background:var(--deep); padding:5rem 2rem 2rem; text-align:center; bord
 
 <div class="divider reveal"><svg width="480" height="30" viewBox="0 0 480 30" fill="none"><line x1="0" y1="15" x2="185" y2="15" stroke="var(--gold)" stroke-width=".5" opacity=".35"/><polygon points="240,3 248,15 240,27 232,15" fill="none" stroke="var(--gold)" stroke-width="1.2" opacity=".9"/><polygon points="240,8 245,15 240,22 235,15" fill="rgba(201,168,76,.25)"/><line x1="295" y1="15" x2="480" y2="15" stroke="var(--gold)" stroke-width=".5" opacity=".35"/></svg></div>
 
+<section class="venue" id="venue">
+  <div class="inner">
+    <span class="sec-label reveal">The Venue</span>
+    <h2 class="sec-title reveal reveal-d1">White River Landing</h2>
+    <div class="sec-title-italic reveal reveal-d2">Where the evening begins</div>
+
+    <p class="venue-text reveal reveal-d3">
+      Nestled in Fayetteville, White River Landing sets the scene for an intimate autumn evening surrounded by natural beauty, candlelight, and the people we love most.
+    </p>
+
+    <div class="venue-grid reveal reveal-d4">
+      <img class="venue-main" src="PASTE-VENUE-PHOTO-URL-1" alt="White River Landing wedding venue">
+      <img src="PASTE-VENUE-PHOTO-URL-2" alt="White River Landing ceremony space">
+      <img src="PASTE-VENUE-PHOTO-URL-3" alt="White River Landing reception space">
+    </div>
+
+    <a class="btn" href="https://www.google.com/maps/search/White+River+Landing+Fayetteville+Arkansas" target="_blank">
+      <span>View Location</span>
+    </a>
+  </div>
+</section>
+  
 <section class="gallery" id="gallery">
   <div class="inner">
     <span class="sec-label reveal">Captured Moments</span>
